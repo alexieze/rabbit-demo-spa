@@ -51,3 +51,14 @@ services:
             - "POSTGRES_DB=api"
         ports:
             - "54321:5432"
+
+    mailer:
+        image: mailhog/mailhog
+        restart: unless-stopped
+        environment:
+            - "POSTGRES_USER=api"
+            - "POSTGRES_PASSWORD=secret"
+            - "POSTGRES_DB=api"
+        ports:
+            - "1025:1025"
+            - "8082:8025"
